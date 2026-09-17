@@ -1,0 +1,1320 @@
+/* ==========================================================================
+   CAMPUS CONNECT PORTAL - RV UNIVERSITY (CS3301 Full Stack Development)
+   Responsive HTML5 & CSS3 External Stylesheet
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CSS Variables & Design System Tokens
+   -------------------------------------------------------------------------- */
+:root {
+  /* Brand Color Palette */
+  --primary-green: #0d5c3a;
+  --accent-green: #15803d;
+  --light-green: #ecfdf5;
+  --hover-green: #09472c;
+  --crimson-badge: #991b1b;
+
+  /* Role Identity Colors */
+  --student-color: #16a34a;
+  --student-light: #f0fdf4;
+  --faculty-color: #2563eb;
+  --faculty-light: #eff6ff;
+  --admin-color: #7c3aed;
+  --admin-light: #f5f3ff;
+  --alumni-color: #d97706;
+  --alumni-light: #fffbeb;
+
+  /* Neutrals & Theme Surfaces */
+  --bg-body: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-surface-alt: #f1f5f9;
+  --text-main: #0f172a;
+  --text-body: #334155;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --border-focus: #0d5c3a;
+
+  /* Shadows & Elevations */
+  --shadow-sm: 0 2px 4px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 6px 16px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 16px 32px rgba(13, 92, 58, 0.12);
+  --shadow-hover: 0 20px 36px rgba(15, 23, 42, 0.14);
+
+  /* Border Radii */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-pill: 9999px;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-smooth: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-bounce: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Container Width */
+  --max-width: 1200px;
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset & Base Typography
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-body);
+  color: var(--text-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* --------------------------------------------------------------------------
+   3. Global Layout Components & Section Helpers
+   -------------------------------------------------------------------------- */
+.section-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 4.5rem 1.5rem;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 3rem auto;
+}
+
+.section-header.text-left {
+  text-align: left;
+  margin-left: 0;
+}
+
+.section-badge {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--primary-green);
+  background-color: var(--light-green);
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius-pill);
+  margin-bottom: 0.75rem;
+  border: 1px solid rgba(13, 92, 58, 0.15);
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin-bottom: 0.8rem;
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   4. Navigation Bar (<header> & <nav> with Flexbox)
+   -------------------------------------------------------------------------- */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-fast);
+}
+
+.navbar-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0.85rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-group {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.brand-badge {
+  background: linear-gradient(135deg, var(--crimson-badge) 0%, #7f1d1d 100%);
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 1.15rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(153, 27, 27, 0.25);
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+.university-name {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--primary-green);
+  letter-spacing: -0.01em;
+  display: block;
+}
+
+.sub-dept {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* Navigation Links (Flexbox) */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.nav-link {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-body);
+  position: relative;
+  padding: 0.35rem 0;
+  transition: color var(--transition-fast);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2.5px;
+  background-color: var(--primary-green);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.25s ease-in-out;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--primary-green);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Auth / Navigation Action Buttons */
+.nav-actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.btn-primary,
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1.25rem;
+  font-weight: 600;
+  font-size: 0.92rem;
+  border-radius: var(--radius-sm);
+  transition: var(--transition-fast);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.btn-secondary {
+  color: var(--primary-green);
+  border: 1.5px solid var(--primary-green);
+  background-color: transparent;
+}
+
+.btn-secondary:hover {
+  background-color: var(--light-green);
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background-color: var(--primary-green);
+  color: #ffffff;
+  border: 1.5px solid var(--primary-green);
+  box-shadow: 0 4px 10px rgba(13, 92, 58, 0.2);
+}
+
+.btn-primary:hover {
+  background-color: var(--hover-green);
+  border-color: var(--hover-green);
+  box-shadow: 0 6px 14px rgba(13, 92, 58, 0.28);
+  transform: translateY(-1px);
+}
+
+/* Hamburger Toggle (Hidden on desktop) */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 22px;
+  background: transparent;
+  padding: 0;
+  z-index: 1010;
+}
+
+.hamburger-bar {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: var(--primary-green);
+  border-radius: 3px;
+  transition: var(--transition-fast);
+}
+
+/* --------------------------------------------------------------------------
+   5. Hero Banner Section
+   -------------------------------------------------------------------------- */
+.hero-banner {
+  background: linear-gradient(135deg, #052e1c 0%, #0d5c3a 50%, #15803d 100%);
+  color: #ffffff;
+  padding: 5rem 1.5rem 4rem 1.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero-content {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.module-tag {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  padding: 0.35rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  border-radius: var(--radius-pill);
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+}
+
+.hero-banner h1 {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  margin-bottom: 1.2rem;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.hero-banner .subtitle {
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  font-weight: 400;
+  max-width: 680px;
+  margin: 0 auto 2.5rem auto;
+  opacity: 0.92;
+  line-height: 1.6;
+}
+
+.hero-cta-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  margin-bottom: 3.5rem;
+}
+
+.btn-hero-primary {
+  background-color: #ffffff;
+  color: var(--primary-green);
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 0.85rem 2rem;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-hero-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+  background-color: #f8fafc;
+}
+
+.btn-hero-secondary {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(6px);
+  font-weight: 600;
+  font-size: 1.05rem;
+  padding: 0.85rem 2rem;
+  border-radius: var(--radius-sm);
+  transition: var(--transition-fast);
+}
+
+.btn-hero-secondary:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Hero Stats Ribbon (Flexbox) */
+.hero-stats-ribbon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-number {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* --------------------------------------------------------------------------
+   6. Role Portals Section (CSS Grid Cards & Interactive Hover States)
+   -------------------------------------------------------------------------- */
+.portal-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.75rem;
+}
+
+.portal-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease;
+}
+
+.portal-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  transition: var(--transition-fast);
+}
+
+/* Role Specific Accent Borders */
+.student-card::before { background-color: var(--student-color); }
+.faculty-card::before { background-color: var(--faculty-color); }
+.admin-card::before { background-color: var(--admin-color); }
+.alumni-card::before { background-color: var(--alumni-color); }
+
+/* Interactive Hover Elevation Effect */
+.portal-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.student-card:hover { border-color: var(--student-color); }
+.faculty-card:hover { border-color: var(--faculty-color); }
+.admin-card:hover { border-color: var(--admin-color); }
+.alumni-card:hover { border-color: var(--alumni-color); }
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.2rem;
+}
+
+.card-pill {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-pill);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.student-pill { background-color: var(--student-light); color: var(--student-color); }
+.faculty-pill { background-color: var(--faculty-light); color: var(--faculty-color); }
+.admin-pill { background-color: var(--admin-light); color: var(--admin-color); }
+.alumni-pill { background-color: var(--alumni-light); color: var(--alumni-color); }
+
+.role-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.card-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 0.6rem;
+}
+
+.card-desc {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  margin-bottom: 1.4rem;
+  line-height: 1.55;
+}
+
+.card-feature-list {
+  margin-bottom: 1.8rem;
+  flex-grow: 1;
+}
+
+.card-feature-list li {
+  font-size: 0.88rem;
+  color: var(--text-body);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-feature-list li span {
+  color: var(--primary-green);
+  font-weight: 700;
+}
+
+.card-footer {
+  margin-top: auto;
+}
+
+.card-action-btn {
+  display: block;
+  text-align: center;
+  padding: 0.7rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  transition: var(--transition-fast);
+}
+
+.student-btn {
+  background-color: var(--student-light);
+  color: var(--student-color);
+  border: 1px solid rgba(22, 163, 74, 0.3);
+}
+.student-btn:hover {
+  background-color: var(--student-color);
+  color: #ffffff;
+}
+
+.faculty-btn {
+  background-color: var(--faculty-light);
+  color: var(--faculty-color);
+  border: 1px solid rgba(37, 99, 235, 0.3);
+}
+.faculty-btn:hover {
+  background-color: var(--faculty-color);
+  color: #ffffff;
+}
+
+.admin-btn {
+  background-color: var(--admin-light);
+  color: var(--admin-color);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+}
+.admin-btn:hover {
+  background-color: var(--admin-color);
+  color: #ffffff;
+}
+
+.alumni-btn {
+  background-color: var(--alumni-light);
+  color: var(--alumni-color);
+  border: 1px solid rgba(217, 119, 6, 0.3);
+}
+.alumni-btn:hover {
+  background-color: var(--alumni-color);
+  color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   7. Campus Life Highlights & Interactive Carousel
+   -------------------------------------------------------------------------- */
+.highlights-section {
+  background-color: #ffffff;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.carousel-wrapper {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.carousel-track-container {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  width: 100%;
+}
+
+.slide {
+  min-width: 100%;
+  position: relative;
+  background-color: #0f172a;
+}
+
+.slide img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+  filter: brightness(0.88);
+}
+
+.slide:hover img {
+  transform: scale(1.03);
+}
+
+.slide-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2.5rem 2rem 1.8rem 2rem;
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.4) 70%, transparent 100%);
+  color: #ffffff;
+}
+
+.slide-caption h4 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.slide-caption p {
+  font-size: 0.95rem;
+  opacity: 0.9;
+  max-width: 600px;
+}
+
+/* Carousel Buttons */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--text-main);
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: var(--transition-fast);
+  z-index: 10;
+}
+
+.carousel-btn:hover {
+  background: #ffffff;
+  color: var(--primary-green);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.prev-btn { left: 1.25rem; }
+.next-btn { right: 1.25rem; }
+
+/* Carousel Indicators */
+.carousel-indicators {
+  position: absolute;
+  bottom: 1rem;
+  right: 2rem;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 10;
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.indicator.active {
+  width: 28px;
+  background: var(--light-green);
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
+}
+
+/* --------------------------------------------------------------------------
+   8. Smart Campus Features Grid (CSS Grid)
+   -------------------------------------------------------------------------- */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.75rem;
+}
+
+.feature-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 2rem 1.75rem;
+  transition: var(--transition-smooth);
+}
+
+.feature-card:hover {
+  border-color: var(--primary-green);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.feature-icon-box {
+  font-size: 2.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.feature-card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 0.6rem;
+}
+
+.feature-card p {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   9. Announcements & Aside Section (2-Column Grid Layout)
+   -------------------------------------------------------------------------- */
+.notices-layout {
+  display: grid;
+  grid-template-columns: 1.8fr 1.2fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.announcement-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--primary-green);
+  border-radius: var(--radius-sm);
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-fast);
+}
+
+.announcement-card.priority-high {
+  border-left-color: var(--crimson-badge);
+}
+
+.announcement-card:hover {
+  transform: translateX(4px);
+  box-shadow: var(--shadow-md);
+}
+
+.announcement-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.15rem 0.6rem;
+  border-radius: var(--radius-pill);
+  text-transform: uppercase;
+}
+
+.tag-urgent { background: #fee2e2; color: #b91c1c; }
+.tag-info { background: #e0f2fe; color: #0369a1; }
+
+.announcement-date {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.announcement-card h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+}
+
+.announcement-card p {
+  font-size: 0.92rem;
+  color: var(--text-body);
+  margin-bottom: 0.8rem;
+}
+
+.announcement-link {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--primary-green);
+  transition: var(--transition-fast);
+}
+
+.announcement-link:hover {
+  text-decoration: underline;
+  padding-left: 4px;
+}
+
+/* Semantic <aside> Styling */
+.announcements-aside {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.aside-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.deadline-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.deadline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.75rem;
+  background: var(--bg-surface-alt);
+  border-radius: var(--radius-sm);
+  transition: var(--transition-fast);
+}
+
+.deadline-item:hover {
+  background: var(--light-green);
+}
+
+.deadline-date {
+  background: var(--primary-green);
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.35rem 0.55rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.deadline-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.deadline-info strong {
+  font-size: 0.9rem;
+  color: var(--text-main);
+}
+
+.deadline-info span {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.aside-helpbox {
+  background: var(--light-green);
+  border: 1px dashed rgba(13, 92, 58, 0.4);
+  padding: 1.2rem;
+  border-radius: var(--radius-sm);
+  text-align: center;
+}
+
+.aside-helpbox h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--primary-green);
+  margin-bottom: 0.25rem;
+}
+
+.aside-helpbox p {
+  font-size: 0.85rem;
+  color: var(--text-body);
+}
+
+.aside-helpbox a {
+  color: var(--primary-green);
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   10. Contact Section
+   -------------------------------------------------------------------------- */
+.contact-section {
+  padding-bottom: 5rem;
+}
+
+.contact-box {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 3rem;
+  box-shadow: var(--shadow-md);
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.contact-text h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin: 0.5rem 0 1rem 0;
+}
+
+.contact-text p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.contact-details p {
+  font-size: 0.92rem;
+  color: var(--text-body);
+  margin-bottom: 0.5rem;
+}
+
+.action-card {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.action-card h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+}
+
+.action-card p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.full-width {
+  width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   11. Semantic Footer
+   -------------------------------------------------------------------------- */
+.main-footer {
+  background-color: #092618;
+  color: #cbd5e1;
+  padding: 4.5rem 1.5rem 2rem 1.5rem;
+  border-top: 4px solid var(--primary-green);
+}
+
+.footer-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 2fr;
+  gap: 4rem;
+  padding-bottom: 3.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-brand .logo-group {
+  margin-bottom: 1rem;
+}
+
+.footer-badge {
+  background: var(--crimson-badge);
+}
+
+.text-white { color: #ffffff !important; }
+.text-light { color: #94a3b8 !important; }
+
+.footer-tagline {
+  font-size: 0.92rem;
+  color: #94a3b8;
+  max-width: 320px;
+  line-height: 1.6;
+}
+
+.footer-links-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.footer-column h4 {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.02em;
+}
+
+.footer-column ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.footer-column a {
+  font-size: 0.88rem;
+  color: #94a3b8;
+  transition: color var(--transition-fast);
+}
+
+.footer-column a:hover {
+  color: #ffffff;
+  padding-left: 3px;
+}
+
+.back-to-top {
+  color: #4ade80 !important;
+  font-weight: 700;
+}
+
+.footer-bottom {
+  max-width: var(--max-width);
+  margin: 2rem auto 0 auto;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+/* --------------------------------------------------------------------------
+   12. Responsive Media Queries (CSS3)
+   Adapts cleanly to desktop, tablet, and mobile screens
+   -------------------------------------------------------------------------- */
+
+/* Tablet Screens (<= 1024px) */
+@media (max-width: 1024px) {
+  .section-container {
+    padding: 3.5rem 1.5rem;
+  }
+
+  .notices-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .contact-box {
+    grid-template-columns: 1fr;
+    padding: 2rem;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+/* Mobile Screens (<= 768px) */
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 0.75rem 1rem;
+  }
+
+  /* Show mobile hamburger toggle */
+  .menu-toggle {
+    display: flex;
+  }
+
+  /* Collapsible mobile navigation menu */
+  .nav-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1.5rem;
+    gap: 1.25rem;
+    border-bottom: 2px solid var(--border-color);
+    box-shadow: 0 16px 24px rgba(0, 0, 0, 0.12);
+    display: none; /* Controlled by JS or active class */
+  }
+
+  .nav-menu.open {
+    display: flex;
+    animation: fadeInSlide 0.25s ease-out forwards;
+  }
+
+  @keyframes fadeInSlide {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .nav-link {
+    width: 100%;
+    padding: 0.5rem 0;
+    font-size: 1.05rem;
+    border-bottom: 1px solid var(--bg-surface-alt);
+  }
+
+  .nav-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+    padding-top: 0.5rem;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    padding: 0.75rem;
+  }
+
+  /* Hero Section Mobile Adjustments */
+  .hero-banner {
+    padding: 3.5rem 1rem 3rem 1rem;
+  }
+
+  .hero-banner h1 {
+    font-size: 2.1rem;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .btn-hero-primary,
+  .btn-hero-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Stats Ribbon Mobile */
+  .hero-stats-ribbon {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+    padding: 1.2rem;
+  }
+
+  .stat-divider {
+    display: none;
+  }
+
+  /* Cards Grid Mobile */
+  .portal-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  /* Carousel Mobile */
+  .slide img {
+    height: 320px;
+  }
+
+  .slide-caption {
+    padding: 1.5rem 1rem 1rem 1rem;
+  }
+
+  .slide-caption h4 {
+    font-size: 1.15rem;
+  }
+
+  .slide-caption p {
+    font-size: 0.85rem;
+  }
+
+  .carousel-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 1rem;
+  }
+
+  .prev-btn { left: 0.5rem; }
+  .next-btn { right: 0.5rem; }
+
+  /* Footer Links Group Mobile */
+  .footer-links-group {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+}
+
+/* Extra Small Devices (<= 480px) */
+@media (max-width: 480px) {
+  .section-container {
+    padding: 2.5rem 1rem;
+  }
+
+  .brand-text .university-name {
+    font-size: 0.95rem;
+  }
+
+  .brand-text .sub-dept {
+    font-size: 0.72rem;
+  }
+
+  .hero-stats-ribbon {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-links-group {
+    grid-template-columns: 1fr;
+  }
+}
